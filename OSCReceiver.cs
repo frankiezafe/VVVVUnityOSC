@@ -30,6 +30,8 @@
 
 #endregion licence/info
 
+using UnityEngine;
+
 using System;
 using System.Net;
 using System.Net.Sockets;
@@ -43,6 +45,19 @@ namespace VVVV_OSC
 	{
 		protected UdpClient udpClient;
 		protected int localPort;
+
+		public static float saveFloatCast( object o, float def ) {
+			try {
+				return (float) o;
+			} catch ( Exception e ) {
+				try {
+					return (float)((int) o);
+				} catch ( Exception e2 ) {
+//				Debug.Log ( "Impossible to cast: " + al[ index ].ToString() );
+					return def;
+				}
+			}
+		}
 
 		public OSCReceiver(int localPort)
 		{
@@ -68,16 +83,14 @@ namespace VVVV_OSC
 		{
             try
             {
-                // IPEndPoint ip = null;
-				IPEndPoint ip = new IPEndPoint( IPAddress.Any, localPort );
-                byte[] bytes = this.udpClient.Receive(ref ip);
-
-                if (bytes != null && bytes.Length > 0) {
+				IPEndPoint ip= new IPEndPoint( IPAddress.Any, localPort );
+                byte[] bytes = this.udpClient.Receive( ref ip );
+                if ( bytes != null && bytes.Length > 0 ) {
                     return OSCPacket.Unpack(bytes);
 				}
 
-            } catch (Exception e) { 
-                Console.WriteLine(e.Message);
+            } catch (Exception e) {
+				Debug.Log( e.ToString() );
                 return null;
             }
 
