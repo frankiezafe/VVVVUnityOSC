@@ -27,7 +27,7 @@ Code by Yoshinori Kawasaki, found in VVVV SDK > https://github.com/vvvv/vvvv-sdk
 		private OSCReceiver oscin;
 
 		void Start () {
-			oscin = new OSCReceiver( [YOU PORT] );
+			oscin = new OSCReceiver( [YOUR PORT] );
 			thread = new Thread( new ThreadStart( UpdateOSC ) );
 			thread.Start();
 		}
