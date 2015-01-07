@@ -1,7 +1,10 @@
 VVVVUnityOSC
 ============
 
-OSC methods for Unity, that allows #bunlde management (openframeworks OSC)
+OSC methods for Unity, that allows **bunlde** management (openframeworks OSC)
+
+To make this run in release, copy **I18N.dll** & **I18N.West.dll** in Assets\Plugins folder from your Unity project.
+On my computer, they are located in *C:\Program Files (x86)\Unity\Editor\Data\Mono\lib\mono\2.0*
 
 Code by Yoshinori Kawasaki, found in VVVV SDK > https://github.com/vvvv/vvvv-sdk/, [/common/src/core/Utils/OSC]
 
